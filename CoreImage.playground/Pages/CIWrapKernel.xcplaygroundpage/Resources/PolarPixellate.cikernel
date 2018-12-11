@@ -1,0 +1,20 @@
+//
+//  PolarPixellate.cikernel
+//
+//  Copyright © 2018 sunlubo. All rights reserved.
+//
+
+// https://github.com/BradLarson/GPUImage/blob/master/framework/Source/GPUImagePolarPixellateFilter.m
+kernel vec2 polarPixellate(vec2 center, vec2 pixelSize) {
+    vec2 normCoord = 2.0 * destCoord() - 1.0;
+    vec2 normCenter = 2.0 * center - 1.0;
+    normCoord -= normCenter;
+    float r = length(normCoord);
+    float phi = atan(normCoord.y, normCoord.x);
+    r = r - mod(r, pixelSize.x) + 0.03;
+    phi = phi - mod(phi, pixelSize.y);
+    normCoord.x = r * cos(phi);
+    normCoord.y = r * sin(phi);
+    normCoord += normCenter;
+    return normCoord / 2.0 + 0.5;
+}

@@ -1,0 +1,10 @@
+//
+//  MirrorY.cikernel
+//
+//  Copyright © 2018 sunlubo. All rights reserved.
+//
+
+kernel vec2 mirrorY(float imageHeight) {
+    vec2 point = destCoord();
+    return vec2(point.x, imageHeight - point.y);
+}

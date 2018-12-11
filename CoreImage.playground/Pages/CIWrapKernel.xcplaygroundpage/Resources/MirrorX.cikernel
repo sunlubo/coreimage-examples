@@ -1,0 +1,10 @@
+//
+//  MirrorX.cikernel
+//
+//  Copyright © 2018 sunlubo. All rights reserved.
+//
+
+kernel vec2 mirrorX(float imageWidth) {
+    vec2 point = destCoord();
+    return vec2(imageWidth - point.x, point.y);
+}

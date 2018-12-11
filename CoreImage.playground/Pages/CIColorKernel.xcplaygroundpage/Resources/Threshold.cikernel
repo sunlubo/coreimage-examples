@@ -1,0 +1,10 @@
+//
+//  Threshold.cikernel
+//
+//  Copyright © 2018 sunlubo. All rights reserved.
+//
+
+kernel vec4 threshold(__sample pixel, float threshold) {
+    float luma = dot(pixel.rgb, vec3(0.2126, 0.7152, 0.0722));
+    return vec4(step(threshold, luma));
+}

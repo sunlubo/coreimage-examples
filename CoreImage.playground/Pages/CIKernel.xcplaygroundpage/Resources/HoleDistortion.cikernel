@@ -1,0 +1,32 @@
+//
+//  HoleDistortion.cikernel
+//
+//  Copyright © 2018 sunlubo. All rights reserved.
+//
+
+// Takes three parameters—a sampler, a vector that specifies the center of the hole distortion, and the params vector,
+// which contains (1/radius, radius).
+kernel vec4 holeDistortion(sampler src, vec2 center, vec2 params) {
+    vec2 t1;
+    float distance0, distance1;
+
+    // Creates the vector t1 from the center to the current working coordinates.
+    t1 = destCoord() - center;
+    // Squares the distance from the center and assigns the value to the distance0 variable.
+    distance0 = dot(t1, t1);
+    // Normalizes t1. (Makes t1 a unit vector.)
+    t1 = t1 * inversesqrt(distance0);
+    // Computes the parametric distance from the center (distance squared * 1/distance) * 1/radius.
+    // This value is 0 at the center and 1 where the distance is equal to the radius.
+    distance0 = distance0 * inversesqrt(distance0) * params.x;
+    // Creates a hole with the appropriate distortion around it. (x – 1/sqrt (x))
+    distance1 = distance0 - (1.0 / distance0);
+    // Makes sure that all pixels within the hole map from the pixel at the center, then scales up the distorted
+    // distance function by the radius.
+    distance0 = (distance0 < 1.0 ? 0.0 : distance1) * params.y;
+    // Scales the vector to create the distortion and then adds the center back in.
+    t1 = t1 * distance0 + center;
+
+    // Returns the distorted sample from the source texture.
+    return sample(src, samplerTransform(src, t1));
+}

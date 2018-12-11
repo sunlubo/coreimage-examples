@@ -1,0 +1,17 @@
+kernel vec4 boxBlur(sampler image, float blurRadius) {
+    vec2 dst = destCoord();
+    int radius = int(blurRadius);
+    vec3 accumulator = vec3(0.0, 0.0, 0.0);
+    float n = 0.0;
+    for (int x = -radius; x <= radius; x++) {
+        for (int y = -radius; y <= radius; y++) {
+            vec2 wsc = dst + vec2(x, y);
+            vec2 isc = samplerTransform(image, wsc);
+            vec3 color = sample(image, isc).rgb;
+            accumulator += color;
+            n += 1.0;
+        }
+    }
+    accumulator /= n;
+    return vec4(accumulator, 1.0);
+}

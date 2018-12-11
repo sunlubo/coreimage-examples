@@ -1,0 +1,6 @@
+kernel vec4 highPass(sampler image, sampler blurredImage) {
+    vec4 p1 = sample(image, samplerTransform(image, destCoord()));
+    vec4 p2 = sample(blurredImage, samplerTransform(blurredImage, destCoord()));
+    vec3 p3 = p1.rgb - p2.rgb + vec3(0.5, 0.5, 0.5);
+    return vec4(p3, p1.a);
+}

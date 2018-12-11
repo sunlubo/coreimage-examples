@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='macos' executeOnSourceChanges='false'>
+    <pages>
+        <page name='Basic'/>
+        <page name='ColorAdjustment'/>
+        <page name='ColorEffect'/>
+        <page name='Generator'/>
+        <page name='DistortionEffect'/>
+        <page name='CompositeOperation'/>
+        <page name='GeometryAdjustment'/>
+        <page name='Gradient'/>
+        <page name='HalftoneEffect'/>
+        <page name='Reduction'/>
+        <page name='Blur'/>
+        <page name='Sharpen'/>
+        <page name='Stylize'/>
+        <page name='Convolution'/>
+        <page name='TileEffect'/>
+        <page name='Transition'/>
+        <page name='Detector'/>
+        <page name='Applying a Chroma Key Effect'/>
+        <page name='Selectively Focusing on an Image'/>
+        <page name='Customizing Image Transitions'/>
+        <page name='Simulating Scratchy Analog Film'/>
+        <page name='Custom'/>
+        <page name='CIKernel'/>
+        <page name='CIColorKernel'/>
+        <page name='CIWrapKernel'/>
+        <page name='CIBlendKernel'/>
+        <page name='MetalKernel'/>
+        <page name='Metal'/>
+        <page name='Depth'/>
+        <page name='High Pass Skin Smoothing'/>
+    </pages>
+</playground>

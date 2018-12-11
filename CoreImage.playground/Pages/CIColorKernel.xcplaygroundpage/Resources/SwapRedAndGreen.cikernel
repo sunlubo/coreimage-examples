@@ -1,0 +1,9 @@
+//
+//  SwapRedAndGreen.cikernel
+//
+//  Copyright © 2018 sunlubo. All rights reserved.
+//
+
+kernel vec4 swapRedAndGreen(__sample s, float amount) {
+    return mix(s.rgba, s.grba, amount);
+}
